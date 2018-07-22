@@ -281,6 +281,10 @@ void timedTasks() {
   if ((millis() > TTasks + (kUpdFreq*60000)) || (millis() < TTasks)) { 
     TTasks = millis();
     checkConnection();
+          if (requestRestart) {
+    blinkLED(LED, 400, 4);
+    ESP.restart();
+          }
   }
   if ((millis() > TTasks2 + (kUpdFreq*20000)) || (millis() < TTasks2)) { 
     TTasks2 = millis();
